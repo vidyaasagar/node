@@ -1,4 +1,17 @@
+### Relational Databases
+* SQL - separate tables for different data, Tied together by user_id, complex representation
+* Relational database management systems can be very complex for relatively simple schemas.
+* Complex table design
+* Required trained database administrators.
+* updates require wholesale operations.
+* complex queries to join related data.
+* RDBMS save data in rows within tables. MongoDB saves data as documents within collections.
+
 ### MongoDB
+
+#### terminology
+
+* database - database, table - collection, row - document
 
 * MongoDB is a database management system designed to rapidly develop web applications and internet        infrastructure.
 * NoSQL Document Oriented database
@@ -7,8 +20,59 @@
 * Such model allows hierarchical relationships representation, array storage, and ability to change the records structure by simply adding or deleting fields. 
 * This NoSQL solution comes with embedding, auto-sharding, and on-board replication for better scalability and high availability.
 * The ability to cope with large and unstructured amounts of data.[scaling]
+* Flexible indexing capability.
+* Easy to access related information.
+* Mongo provides powerful set of indexing capabilities to address large datasets and adhoc queries.
 
 ### Schema Design
+
+* How much data to include within the each of your documents.MongoDB supports a hundred levels of depth for your documents.
+
+#### Embeded data
+
+* Easier to work with
+* Minimizes coding operations
+* Easier to query and index
+
+#### included by reference
+
+* more operations for inserting and access
+* Aggregating data can be complex.
+* Enables consistent data.
+
+#### Indexing
+Mongo also allows you to impose uniqueness rules via indexing. So, for instance, you might want to restrict user names so there are no duplicates. For this type of index, you'd want to create it before inserting documents, as that's the point in which the check is made.
+
+* Indexing provides performance improvements
+* Ad hoc queries are expensive
+* Large datasets can lose performance
+* Indices are even useful for simple data.
+
+#### Indexing features
+
+* 64 indices per collection
+* single field
+* compound
+* Unique
+
+#### sharding
+sharding splits the database across multiple machines, storing a subset of data on each of the systems. Using sharding means that you can scale your application across several smaller systems rather than investing in a larger, more expensive solution. While manual sharding is possible with almost any database system, Mongo can handle the sharding operation so that your code can work with the database as a single system. 
+* sharding is difficult to setup and maintain but it can make it possible to manage databases at large scale without a huge capital investment
+* while sharding is aimed at scalability, it's arguably even more important to ensure the uptime of your system, and for this mongo provides replication
+
+* paritioning data on different machines
+* Provides scalability via software
+* Autosharding supported by mongo
+* Challenging to set up
+
+#### Replication
+With Mongo, you set up a replica set for your database with a primary server and some number of secondary servers, which keep copies of the primary servers data. If your primary server fails, one of the secondary servers will be promoted to the primary slot, and the database will continue to act as usual. When the original primary comes back online, it will be added back to the system as a new secondary server in the system. 
+* Mongo does have features to support databases of complexity while maintaining scalability, performance, and reliability.
+
+* Reliability
+* Maximizes uptime
+* Replica sets 
+* Automatic failover
 
 #### Modeling One-to-Few
 
@@ -111,3 +175,5 @@ Based on these factors, you can pick one of the three basic One-to-N schema desi
 * Embed the N side if the cardinality is one-to-few and there is no need to access the embedded object outside the context of the parent object
 * Use an array of references to the N-side objects if the cardinality is one-to-many or if the N-side objects should stand alone for any reasons
 * Use a reference to the One-side in the N-side objects if the cardinality is one-to-squillions
+
+### Two way referencing and denormalization

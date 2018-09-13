@@ -18,8 +18,11 @@ The salt is a string of characters unique to each user. The hash is created by c
 <!-- https://blog.angular-university.io/angular-jwt-authentication/ -->
 <!-- https://blog.angular-university.io/angular-2-universal-meet-the-internet-of-the-future-seo-friendly-single-page-web-apps/ -->
 <!-- https://blog.angular-university.io/angular-universal/ -->
+* JSON Web Tokens is an industry standard that provides a safe and compact way for representing data transferred between two parties.
+* JWT's can be verified because they are signed, typically using a secret with the HMACSHA-256 algorithm.
+* 
 A JWT is actually made up of three separate strings, separated by a dot .. These three parts are:
 
-Header — an encoded JSON object containing the type and the hashing algorithm used
+Header — an encoded JSON object containing the type(JWT) and the hashing algorithm(HMACSHA-256) used
 Payload — an encoded JSON object containing the data, the real body of the token
 Signature — an encrypted hash of the header and payload, using the “secret” set on the server.
